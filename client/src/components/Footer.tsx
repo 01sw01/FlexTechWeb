@@ -2,6 +2,7 @@ import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import logoImage from "@assets/image_1759744025337.png";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -17,10 +18,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">FT</span>
-              </div>
-              <span className="font-bold text-xl">FlexTech</span>
+              <img src={logoImage} alt="FlexTech" className="h-10" />
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               FlexTech specializes in selling mobiles and accessories with a focus on providing flexibility to our customers.

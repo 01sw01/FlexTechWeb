@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
+import logoImage from "@assets/image_1759744025337.png";
 
 interface HeaderProps {
   cartCount?: number;
@@ -30,12 +31,9 @@ export default function Header({ cartCount = 0, onMenuClick }: HeaderProps) {
             <Menu className="h-6 w-6" />
           </button>
 
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">FT</span>
-            </div>
-            <span className="hidden sm:block font-bold text-xl">FlexTech</span>
-          </div>
+          <a href="/" className="flex items-center gap-2">
+            <img src={logoImage} alt="FlexTech" className="h-10" />
+          </a>
 
           <div className="hidden md:flex flex-1 max-w-xl">
             <div className="relative w-full">

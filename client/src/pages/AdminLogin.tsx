@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
-import { Shield } from "lucide-react";
+import logoImage from "@assets/image_1759744025337.png";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -18,9 +18,7 @@ export default function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
       <Card className="w-full max-w-md p-8">
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
-            <Shield className="h-8 w-8 text-primary-foreground" />
-          </div>
+          <img src={logoImage} alt="FlexTech" className="h-16 mb-4" />
           <h1 className="text-2xl font-bold">Admin Panel</h1>
           <p className="text-sm text-muted-foreground">Sign in to access the dashboard</p>
         </div>
