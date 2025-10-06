@@ -31,9 +31,9 @@ import cable3 from "@assets/stock_images/usb_cable_lightning__621c7026.jpg";
 import cable4 from "@assets/stock_images/usb_cable_lightning__729837a4.jpg";
 import cable5 from "@assets/stock_images/usb_cable_lightning__f4b4adf5.jpg";
 
-import hero1 from "@assets/stock_images/mobile_phone_accesso_dba05bdc.jpg";
-import hero2 from "@assets/stock_images/smartphone_technolog_ff7d483e.jpg";
-import hero3 from "@assets/stock_images/mobile_phone_accesso_cbf2cad1.jpg";
+import hero1 from "@assets/img-10_1759756527491.jpg";
+import hero2 from "@assets/img-12_1759756527492.png";
+import hero3 from "@assets/img-30_1759756527494.png";
 
 export interface Product {
   id: string;
@@ -649,23 +649,23 @@ export const heroSlides = [
   {
     id: 1,
     image: hero1,
-    title: 'Exciting News! iPhone 16 Pro Max Available',
-    subtitle: 'Now available with flexible payment options',
+    title: 'Shop the Latest Mobile Accessories',
+    subtitle: 'Premium smartphones, smartwatches, and headphones at unbeatable prices',
     cta: 'Shop Now'
   },
   {
     id: 2,
     image: hero2,
-    title: 'Premium Mobile Accessories',
-    subtitle: 'Quality products at unbeatable prices',
+    title: 'Latest Smartphones Available',
+    subtitle: 'Discover cutting-edge technology with the newest mobile devices',
     cta: 'Browse Collection'
   },
   {
     id: 3,
     image: hero3,
-    title: 'Fast Wireless Charging',
-    subtitle: 'Latest charging technology for all devices',
-    cta: 'View Chargers'
+    title: 'Protect Your Device',
+    subtitle: 'Premium screen protectors and cases for ultimate protection',
+    cta: 'Discover More'
   }
 ];
 

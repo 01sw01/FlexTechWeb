@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
-import logoImage from "@assets/image_1759744025337.png";
+import logoImage from "@assets/flextech_1759756527490.png";
 
 interface HeaderProps {
   cartCount?: number;
@@ -120,7 +120,7 @@ export default function Header({ cartCount = 0, onMenuClick }: HeaderProps) {
         </div>
       </div>
 
-      <nav className="hidden lg:block border-t">
+      <nav className="hidden lg:block border-t bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-6 py-3 text-sm">
             <a href="/" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-home">
