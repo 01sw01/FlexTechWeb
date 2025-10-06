@@ -122,30 +122,18 @@ export default function Header({ cartCount = 0, onMenuClick }: HeaderProps) {
 
       <nav className="hidden lg:block border-t bg-muted/50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-6 py-3 text-sm">
+          <div className="flex items-center gap-8 py-3 text-sm font-medium">
             <a href="/" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-home">
               Home
             </a>
-            <a href="/products" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-products">
-              Products
+            <a href="/products" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-shop">
+              Shop
             </a>
-            <a href="/products?category=chargers" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-chargers">
-              Chargers
+            <a href="#about" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-about">
+              About us
             </a>
-            <a href="/products?category=cases" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-cases">
-              Cases
-            </a>
-            <a href="/products?category=headphones" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-headphones">
-              Headphones
-            </a>
-            <a href="/products?category=powerbanks" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-powerbanks">
-              Power Banks
-            </a>
-            <a href="/about" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-about">
-              About Us
-            </a>
-            <a href="/contact" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-contact">
-              Contact
+            <a href="#contact" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-contact">
+              Contact Us
             </a>
           </div>
         </div>

@@ -143,7 +143,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section id="about" className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ fontFamily: 'var(--font-display)' }}>
               About FlexTech
@@ -175,10 +175,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 bg-muted/30">
+        <section id="contact" className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8" style={{ fontFamily: 'var(--font-display)' }}>
-              Get in Touch
+              Contact Us
             </h2>
             <div className="max-w-2xl mx-auto">
               <div className="bg-card rounded-xl p-8 space-y-6 shadow-lg">
