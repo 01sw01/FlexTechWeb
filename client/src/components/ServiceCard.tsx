@@ -1,4 +1,4 @@
-import { Smartphone, Phone, Unlock, Monitor, HardDrive, Shield } from "lucide-react";
+import { Smartphone, Phone, Shield, Battery, BatteryCharging, Headphones } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 interface ServiceCardProps {
@@ -10,10 +10,10 @@ interface ServiceCardProps {
 const iconMap: Record<string, any> = {
   Smartphone,
   Phone,
-  Unlock,
-  Monitor,
-  HardDrive,
-  Shield
+  Shield,
+  Battery,
+  BatteryCharging,
+  Headphones
 };
 
 export default function ServiceCard({ title, description, icon }: ServiceCardProps) {

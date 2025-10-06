@@ -681,24 +681,24 @@ export const serviceCards = [
     icon: 'Phone'
   },
   {
-    title: 'Unlocking Services',
-    description: 'We specialize in unlocking phones, fixing stuck devices, and reinstalling operating systems.',
-    icon: 'Unlock'
-  },
-  {
-    title: 'Computer Accessories',
-    description: 'Premium computer accessories to enhance your tech experience.',
-    icon: 'Monitor'
-  },
-  {
-    title: 'Expert IT Services',
-    description: 'Windows installation, data recovery, data transfer, and software installation services.',
-    icon: 'HardDrive'
-  },
-  {
-    title: 'Hydrogel Screen Protectors',
-    description: 'Premium Hydrogel Screen Protectors with superior scratch resistance.',
+    title: 'Premium Phone Cases',
+    description: 'Protective cases in various styles and materials to keep your device safe and stylish.',
     icon: 'Shield'
+  },
+  {
+    title: 'Fast Chargers & Cables',
+    description: 'High-speed wired and wireless chargers compatible with all major smartphone brands.',
+    icon: 'Battery'
+  },
+  {
+    title: 'Audio & Headphones',
+    description: 'Wireless earbuds, headphones, and audio accessories for the best sound experience.',
+    icon: 'Headphones'
+  },
+  {
+    title: 'Power Banks & Batteries',
+    description: 'Portable power solutions to keep your devices charged on the go.',
+    icon: 'BatteryCharging'
   }
 ];
 
