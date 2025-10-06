@@ -1,0 +1,370 @@
+Create a fully functional e-commerce product category page for mobile accessories with customer-facing features and a complete admin panel system.
+As a first step, make it a dummy static flow. like a prototype without using any database, processing, payment api etc.
+
+=== TECHNOLOGY STACK & ARCHITECTURE ===
+
+REQUIRED TECHNOLOGIES:
+- React 18+ (functional components with hooks)
+- Redux Toolkit for state management
+- React Router v6 for routing
+- Redux Thunk or Redux Saga for async operations (optional, can use Redux Toolkit's createAsyncThunk)
+- Tailwind CSS for styling
+- Lucide React or Heroicons for icons
+- Recharts or Chart.js for admin analytics charts
+=== CUSTOMER-FACING FEATURES ===
+
+CORE FEATURES:
+1. Product Catalog System
+   - Display products in a responsive grid layout
+   - Each product card should include: product image, title, brand, price, rating, and action buttons
+   - Support for 20-50 products per page
+   - Product availability status indicators
+
+2. Advanced Filtering System
+   - Filter by brand (multi-select)
+   - Filter by price range (slider or input fields)
+   - Filter by product type/subcategory (chargers, cases, screen protectors, headphones, cables, power banks, etc.)
+   - Filter by ratings (4+ stars, 3+ stars, etc.)
+   - Filter by special features (wireless, fast charging, waterproof, etc.)
+   - Show active filters with option to clear individual or all filters
+   - Display product count for each filter option
+
+3. Sorting Functionality
+   - Sort by: popularity, price (low to high), price (high to low), newest arrivals, best rated, best sellers
+   - Dropdown or button group for sort selection
+
+4. Product Interaction Features
+   - Add to cart button with quantity selector
+   - Add to wishlist/favorites (heart icon)
+   - Quick view modal for product details
+   - Product comparison (select multiple products to compare)
+   - Share product functionality
+
+5. Search & Navigation
+   - Search bar with autocomplete suggestions
+   - Breadcrumb navigation (Home > Mobiles & Tablets > Mobile Accessories)
+   - Category sidebar or top navigation
+   - Sub-category quick links
+
+6. Pagination
+   - Page numbers with previous/next buttons
+   - Show "X products of Y total"
+   - Option for items per page (24, 48, 96)
+
+7. Shopping Cart
+   - Mini cart preview in header showing item count
+   - Add/remove items
+   - Update quantities
+   - Calculate subtotal
+   - Proceed to checkout button
+
+8. Product Information Display
+   - Product images with hover zoom
+   - Price with currency symbol
+   - Original price with discount percentage (if on sale)
+   - Star rating with review count
+   - Stock status (In Stock, Limited Stock, Out of Stock)
+   - Special badges (Sale, New, Bestseller, Limited Offer)
+   - Brand logos
+
+9. User Account Features
+   - Login/Register functionality
+   - User profile icon with dropdown menu
+   - Order history access
+   - Wishlist access
+   - Account settings
+
+10. Additional Functionality
+    - Recently viewed products section
+    - "You may also like" recommendations
+    - Newsletter subscription form
+    - Customer support chat widget
+    - Store location finder
+    - Delivery information display
+    - Multiple payment method icons
+    - Mobile responsive design
+    - Loading states and skeleton screens
+    - Empty state messages (no products found, empty cart)
+    - Toast notifications for actions (added to cart, added to wishlist)
+
+=== ADMIN PANEL FEATURES ===
+
+ADMIN AUTHENTICATION & ACCESS:
+1. Admin Login System
+   - Separate admin login page with credentials validation
+   - Admin session management
+   - Role-based access control (Super Admin, Admin, Manager, Staff)
+   - Password change functionality
+   - Admin logout functionality
+   - Session timeout handling
+
+2. Admin Dashboard
+   - Overview statistics: total products, total orders, revenue, active users
+   - Sales charts (daily, weekly, monthly)
+   - Recent orders list
+   - Low stock alerts
+   - Top selling products
+   - Recent customer activities
+   - Quick action buttons (Add Product, View Orders, Manage Inventory)
+
+PRODUCT MANAGEMENT:
+3. Product CRUD Operations
+   - Add new product form with fields:
+     * Product name
+     * Brand selection (dropdown)
+     * Category/subcategory selection
+     * Price and original price
+     * Discount percentage (auto-calculate)
+     * Product description (rich text editor)
+     * Multiple image upload (main image + gallery images)
+     * Stock quantity
+     * SKU/product code
+     * Product features (multiple text inputs)
+     * Product specifications (key-value pairs)
+     * Status (Active/Inactive/Draft)
+     * Tags/keywords
+     * SEO meta information
+   - View all products in table/grid format
+   - Edit existing products (populate form with current data)
+   - Delete products (with confirmation dialog)
+   - Bulk actions (delete, activate, deactivate, change category)
+   - Product duplicate/clone functionality
+   - Import products from CSV/Excel
+   - Export products to CSV/Excel
+
+4. Product List Management
+   - Searchable product list
+   - Filter products by: status, category, brand, stock level, date added
+   - Sort products by: name, price, stock, date, popularity
+   - Pagination controls
+   - Quick edit inline (price, stock, status)
+   - Product preview link to customer page
+
+5. Inventory Management
+   - Stock quantity tracking
+   - Low stock threshold alerts
+   - Out of stock management
+   - Stock history/log (who changed, when, previous/new value)
+   - Bulk stock update
+   - Stock reports (CSV export)
+
+CATEGORY & BRAND MANAGEMENT:
+6. Category Management
+   - Add/Edit/Delete categories
+   - Add/Edit/Delete subcategories
+   - Category hierarchy visualization
+   - Reorder categories (drag and drop)
+   - Category image upload
+   - Category description
+   - Set category visibility (active/inactive)
+
+7. Brand Management
+   - Add/Edit/Delete brands
+   - Brand logo upload
+   - Brand description
+   - Brand website URL
+   - Brand visibility toggle
+
+ORDER MANAGEMENT:
+8. Order Processing
+   - View all orders in table format
+   - Order details view (customer info, products ordered, shipping address, payment details)
+   - Order status management: Pending, Confirmed, Processing, Shipped, Delivered, Cancelled, Refunded
+   - Order status history/timeline
+   - Send order confirmation emails
+   - Print invoice/packing slip
+   - Order search by: order ID, customer name, email, phone, date range
+   - Filter orders by: status, date, payment method, delivery method
+   - Order notes/comments section
+
+9. Order Analytics
+   - Total orders count
+   - Order status breakdown
+   - Revenue reports (daily, weekly, monthly, yearly)
+   - Average order value
+   - Export orders to CSV/Excel
+
+CUSTOMER MANAGEMENT:
+10. Customer Database
+    - View all customers in table
+    - Customer details: name, email, phone, registration date, total orders, total spent
+    - Customer order history
+    - Customer addresses (shipping/billing)
+    - Search customers by name, email, phone
+    - Filter customers by: registration date, total orders, status
+    - Export customer list
+
+11. Customer Communication
+    - Send email to individual customer
+    - Send bulk emails to customer segments
+    - Newsletter subscriber list
+    - Customer support ticket system (basic)
+
+DISCOUNT & PROMOTION MANAGEMENT:
+12. Discount Code System
+    - Create discount codes/coupons
+    - Discount types: percentage off, fixed amount off, free shipping
+    - Set discount conditions: minimum purchase amount, specific products, specific categories
+    - Usage limits: total uses, uses per customer
+    - Validity period (start date, end date)
+    - Active/inactive status
+    - View discount usage history
+
+13. Special Offers & Badges
+    - Mark products as "Sale"
+    - Mark products as "New"
+    - Mark products as "Bestseller"
+    - Set featured products
+    - Create time-limited flash deals
+    - Manage "Deal of the Day"
+
+CONTENT MANAGEMENT:
+14. Banner Management
+    - Add/Edit/Delete homepage banners
+    - Category page banners
+    - Banner image upload
+    - Banner link/CTA
+    - Banner display order
+    - Schedule banner visibility (start/end date)
+
+15. Static Pages Management
+    - Create/Edit pages: About Us, Contact Us, Terms & Conditions, Privacy Policy, FAQ
+    - Rich text editor for content
+    - Page visibility toggle
+    - SEO settings per page
+
+SETTINGS & CONFIGURATION:
+16. Store Settings
+    - Store name, logo, favicon
+    - Contact information (email, phone, address)
+    - Currency settings
+    - Tax settings
+    - Shipping zones and rates
+    - Payment gateway configuration
+    - Email notification templates
+    - Social media links
+
+17. User Role Management
+    - Create/Edit admin users
+    - Assign roles and permissions
+    - View admin activity log
+    - Suspend/activate admin accounts
+
+REPORTS & ANALYTICS:
+18. Sales Reports
+    - Revenue by date range
+    - Revenue by category
+    - Revenue by brand
+    - Top selling products
+    - Sales comparison (year over year, month over month)
+    - Export reports to PDF/Excel
+
+19. Product Performance Reports
+    - Most viewed products
+    - Products with highest cart additions
+    - Products with low stock
+    - Products never sold
+    - Product review ratings report
+
+20. Customer Analytics
+    - New customer registrations over time
+    - Customer lifetime value
+    - Repeat customer rate
+    - Customer geographic distribution
+
+ADMIN UI FEATURES:
+21. Navigation & Layout
+    - Sidebar navigation with collapsible menu
+    - Top bar with admin profile, notifications, logout
+    - Breadcrumb navigation within admin panel
+    - Quick search across all admin sections
+    - Recent activities feed
+    - Notification center (low stock, new orders, customer messages)
+
+22. Data Tables
+    - Sortable columns
+    - Searchable tables
+    - Column visibility toggle
+    - Adjustable rows per page
+    - Export table data (CSV, Excel, PDF)
+    - Bulk selection with checkboxes
+    - Row action buttons (edit, delete, view)
+
+23. Forms & Validation
+    - Form field validation with error messages
+    - Required field indicators
+    - Auto-save draft functionality
+    - Confirm before leaving unsaved changes
+    - Success/error notifications for all actions
+    - Loading indicators for form submissions
+
+=== TECHNICAL REQUIREMENTS ===
+
+DATA MANAGEMENT:
+- All data should be stored in memory using React state (useState, useReducer, useContext) or JavaScript variables
+- Do NOT use localStorage, sessionStorage, or any browser storage APIs
+- Implement proper state management architecture (Context API for global state)
+- Use mock data with realistic product, order, and customer information
+- Include at least 30 sample products, 15 sample orders, and 10 sample customers
+
+STATE STRUCTURE:
+- Products array with full product objects
+- Orders array with order details
+- Customers array with customer information
+- Categories and brands arrays
+- Cart items array
+- Admin user object with authentication status
+- Discount codes array
+- Settings object
+
+FUNCTIONAL REQUIREMENTS:
+- Implement complete CRUD operations for products, categories, brands, orders
+- Real-time filtering, sorting, and searching
+- Form validation on all input fields
+- Confirmation dialogs for destructive actions (delete)
+- Success/error toast notifications
+- Role-based route protection (admin routes only accessible when logged in as admin)
+- Proper error handling for all operations
+- Loading states for all data operations
+
+NAVIGATION:
+- Separate routing for customer-facing pages and admin panel
+- Admin panel accessible via /admin route
+- Customer pages: / (home), /products, /product/:id, /cart, /checkout, /account
+- Admin pages: /admin/dashboard, /admin/products, /admin/orders, /admin/customers, /admin/categories, /admin/brands, /admin/discounts, /admin/reports, /admin/settings
+
+RESPONSIVE DESIGN:
+- Both customer-facing and admin panel must be fully responsive
+- Mobile-optimized tables (collapsible columns, horizontal scroll)
+- Touch-friendly controls for mobile devices
+- Hamburger menu for mobile navigation
+
+SAMPLE DATA STRUCTURE:
+
+Product Object:
+{
+  id, name, brand, category, subcategory, price, originalPrice, discount, 
+  rating, reviewCount, images[], inStock, stockQuantity, isBestseller, 
+  isNew, isFeatured, features[], specifications{}, description, sku, 
+  tags[], status, dateAdded, views, sales
+}
+
+Order Object:
+{
+  id, orderNumber, customerId, customerName, customerEmail, customerPhone,
+  items[], subtotal, tax, shipping, discount, total, status, paymentMethod,
+  shippingAddress{}, billingAddress{}, orderDate, statusHistory[], notes[]
+}
+
+Customer Object:
+{
+  id, name, email, phone, registrationDate, totalOrders, totalSpent,
+  addresses[], orderHistory[], status, lastOrderDate
+}
+
+Admin User Object:
+{
+  id, username, email, role, permissions[], lastLogin, status
+}
+
+The user interface and css has to be exactly like https://www.flextech-telecom.ae/. 
