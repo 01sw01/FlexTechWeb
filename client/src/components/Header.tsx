@@ -126,14 +126,17 @@ export default function Header({ cartCount = 0, onMenuClick }: HeaderProps) {
             <a href="/" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-home">
               Home
             </a>
-            <a href="/products" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-shop">
-              Shop
+            <a href="/products" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-products-services">
+              Products & Services
+            </a>
+            <a href="/store" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-store">
+              Store
             </a>
             <a href="#about" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-about">
               About us
             </a>
             <a href="#contact" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-contact">
-              Contact Us
+              Contact us
             </a>
           </div>
         </div>
