@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
+import { Link } from "wouter";
 import logoImage from "@assets/flextech_1759756527490.png";
 import { useCart } from "@/contexts/CartContext";
 
@@ -195,18 +196,18 @@ export default function Header({ onMenuClick }: HeaderProps) {
       <nav className="hidden lg:block border-t bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-8 py-3 text-sm font-medium">
-            <a href="/" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-home">
+            <Link href="/" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-home">
               Home
-            </a>
-            <a href="/store" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-store">
+            </Link>
+            <Link href="/store" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-store">
               Store
-            </a>
-            <a href="#about" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-about">
+            </Link>
+            <Link href="/about" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-about">
               About us
-            </a>
-            <a href="#contact" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-contact">
+            </Link>
+            <Link href="/contact" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-contact">
               Contact us
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
