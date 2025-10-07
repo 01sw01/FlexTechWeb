@@ -2,6 +2,7 @@ import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Link } from "wouter";
 import logoImage from "@assets/image_1759744025337.png";
 
 export default function Footer() {
@@ -36,10 +37,10 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/" className="text-muted-foreground hover:text-foreground hover-elevate px-2 py-1 rounded-md inline-block" data-testid="link-footer-home">Home</a></li>
-              <li><a href="/products" className="text-muted-foreground hover:text-foreground hover-elevate px-2 py-1 rounded-md inline-block" data-testid="link-footer-products">Products</a></li>
-              <li><a href="/about" className="text-muted-foreground hover:text-foreground hover-elevate px-2 py-1 rounded-md inline-block" data-testid="link-footer-about">About Us</a></li>
-              <li><a href="/contact" className="text-muted-foreground hover:text-foreground hover-elevate px-2 py-1 rounded-md inline-block" data-testid="link-footer-contact">Contact</a></li>
+              <li><Link href="/" className="text-muted-foreground hover:text-foreground hover-elevate px-2 py-1 rounded-md inline-block" data-testid="link-footer-home">Home</Link></li>
+              <li><Link href="/store" className="text-muted-foreground hover:text-foreground hover-elevate px-2 py-1 rounded-md inline-block" data-testid="link-footer-products">Products</Link></li>
+              <li><Link href="/about" className="text-muted-foreground hover:text-foreground hover-elevate px-2 py-1 rounded-md inline-block" data-testid="link-footer-about">About Us</Link></li>
+              <li><Link href="/contact" className="text-muted-foreground hover:text-foreground hover-elevate px-2 py-1 rounded-md inline-block" data-testid="link-footer-contact">Contact</Link></li>
             </ul>
           </div>
 
