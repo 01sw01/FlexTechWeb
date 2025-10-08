@@ -140,9 +140,11 @@ export default function Header({ onMenuClick }: HeaderProps) {
                           <span>Total:</span>
                           <span data-testid="text-cart-total">AED {cartTotal.toFixed(2)}</span>
                         </div>
-                        <Button className="w-full" size="lg" data-testid="button-checkout">
-                          Proceed to Checkout
-                        </Button>
+                        <Link href="/checkout">
+                          <Button className="w-full" size="lg" data-testid="button-checkout">
+                            Proceed to Checkout
+                          </Button>
+                        </Link>
                       </div>
                     </>
                   )}

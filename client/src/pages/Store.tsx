@@ -130,7 +130,7 @@ export default function Store() {
             <div className="flex-1">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
                 <div>
-                  <h1 className="text-2xl md:text-3xl font-bold mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                  <h1 className="text-2xl md:text-3xl font-sans font-bold mb-2">
                     Mobile Accessories Store
                   </h1>
                   <p className="text-sm text-muted-foreground" data-testid="text-product-count">

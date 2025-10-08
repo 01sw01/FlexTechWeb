@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
+import { Link } from "wouter";
 
 interface ProductCardProps {
   id: string;
@@ -49,12 +50,13 @@ export default function ProductCard({
 
   return (
     <Card className="group overflow-visible hover-elevate transition-all" data-testid={`card-product-${id}`}>
-      <div className="relative aspect-square overflow-hidden rounded-t-lg">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+      <Link href={`/product/${id}`} className="block">
+        <div className="relative aspect-square overflow-hidden rounded-t-lg">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {discount && (
@@ -105,13 +107,16 @@ export default function ProductCard({
             </Badge>
           </div>
         )}
-      </div>
+        </div>
+      </Link>
 
       <div className="p-4 space-y-3">
-        <div>
-          <p className="text-sm text-muted-foreground" data-testid="text-brand">{brand}</p>
-          <h3 className="font-medium line-clamp-2" data-testid="text-product-name">{name}</h3>
-        </div>
+        <Link href={`/product/${id}`} className="block">
+          <div>
+            <p className="text-sm text-muted-foreground" data-testid="text-brand">{brand}</p>
+            <h3 className="font-sans font-medium line-clamp-2" data-testid="text-product-name">{name}</h3>
+          </div>
+        </Link>
 
         <div className="flex items-center gap-1">
           {[...Array(5)].map((_, i) => (
