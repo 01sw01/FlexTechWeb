@@ -9,9 +9,11 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, SlidersHorizontal } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Store() {
   const { addToCart } = useCart();
+  const { toast } = useToast();
   const [sortBy, setSortBy] = useState("popularity");
   const [itemsPerPage, setItemsPerPage] = useState(24);
   const [currentPage, setCurrentPage] = useState(1);
@@ -199,12 +201,18 @@ export default function Store() {
                         key={product.id} 
                         {...product} 
                         image={product.images[0]}
-                        onAddToCart={() => addToCart({
-                          id: product.id,
-                          name: product.name,
-                          price: product.price,
-                          image: product.images[0]
-                        })}
+                        onAddToCart={() => {
+                          addToCart({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            image: product.images[0]
+                          });
+                          toast({
+                            title: "Added to cart!",
+                            description: `${product.name} has been added to your cart.`
+                          });
+                        }}
                       />
                     ))}
                   </div>

@@ -303,6 +303,18 @@ export default function ProductDetail() {
                     inStock={p.inStock}
                     isBestseller={p.isBestseller}
                     isNew={p.isNew}
+                    onAddToCart={() => {
+                      addToCart({
+                        id: p.id,
+                        name: p.name,
+                        price: p.price,
+                        image: p.images[0]
+                      });
+                      toast({
+                        title: "Added to cart!",
+                        description: `${p.name} has been added to your cart.`
+                      });
+                    }}
                   />
                 ))}
               </div>

@@ -11,9 +11,13 @@ import mobileServicesImg from "@assets/img-9_1759756527491.png";
 import accessoriesIconsImg from "@assets/img-7_1759756527490.png";
 import ratingsIcon from "@assets/ratings-icon_1759756527496.png";
 import whatsappIcon from "@assets/whatsapp-icon_1759756527496.png";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Home() {
   const featuredProducts = mockProducts.filter(p => p.isFeatured).slice(0, 8);
+  const { addToCart } = useCart();
+  const { toast } = useToast();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -82,7 +86,23 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {featuredProducts.map((product) => (
-                <ProductCard key={product.id} {...product} image={product.images[0]} />
+                <ProductCard 
+                  key={product.id} 
+                  {...product} 
+                  image={product.images[0]}
+                  onAddToCart={() => {
+                    addToCart({
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      image: product.images[0]
+                    });
+                    toast({
+                      title: "Added to cart!",
+                      description: `${product.name} has been added to your cart.`
+                    });
+                  }}
+                />
               ))}
             </div>
             <div className="text-center mt-8 md:hidden">
