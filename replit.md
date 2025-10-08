@@ -8,6 +8,27 @@ FlexTech is a full-stack e-commerce platform specializing in mobile accessories 
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Changes (October 2025)
+
+**Product Detail & Checkout Features**
+- Created comprehensive product detail pages with image galleries, specifications, features, and related products
+- Implemented full checkout flow with shipping and payment forms
+- Added promo code support: SAVE10 (10% off), SAVE20 (20% off), FLAT50 (AED 50 off)
+- Cart clears automatically after successful order placement
+
+**Design & Typography Updates**
+- Changed Store title and product names from decorative serif to modern sans-serif (Open Sans) for better consistency
+- Improved visual hierarchy and readability across the application
+
+**Content Improvements**
+- Completely redesigned About page with company values, mission statement, statistics, and call-to-action sections
+- Enhanced Contact page with better information layout
+
+**Navigation & UX**
+- Product cards now navigate to detail pages when clicked
+- Proper checkout flow: Product → Add to Cart → Cart Sheet → Checkout → Confirmation
+- All navigation uses wouter Link components for smooth client-side routing
+
 ## System Architecture
 
 ### Frontend Architecture
@@ -36,6 +57,9 @@ Preferred communication style: Simple, everyday language.
 - Wishlist/favorites system
 - Product search and sorting capabilities
 - Hero slider for promotional content
+- Product detail pages with image galleries, specifications, and related products
+- Checkout flow with promo code support (SAVE10, SAVE20, FLAT50)
+- Comprehensive About and Contact pages
 - Admin authentication and dashboard
 
 ### Backend Architecture
@@ -60,7 +84,8 @@ Preferred communication style: Simple, everyday language.
 ### Design System
 
 **Typography**
-- Primary font: Inter (via Google Fonts)
+- Primary font: Inter/Open Sans for modern, clean appearance
+- Store titles and product names use sans-serif (font-sans) for consistency
 - Heading weights: Semi-bold (600) to Bold (700)
 - Body text: Regular (400) to Medium (500)
 - Responsive text scaling (text-5xl/6xl for heroes, text-lg for products)
