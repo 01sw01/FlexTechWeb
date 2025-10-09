@@ -1,11 +1,13 @@
-import { Package, Truck, CheckCircle, Clock } from "lucide-react";
+import { Package, Truck, CheckCircle, Clock, Search } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 interface Order {
   orderNumber: string;
@@ -65,6 +67,9 @@ const getStatusColor = (status: string) => {
 
 export default function MyOrders() {
   const [orders, setOrders] = useState<Order[]>([]);
+  const [orderNumberInput, setOrderNumberInput] = useState("");
+  const [, setLocation] = useLocation();
+  const { toast } = useToast();
 
   useEffect(() => {
     const savedOrders = localStorage.getItem('orders');
@@ -78,6 +83,41 @@ export default function MyOrders() {
     }
   }, []);
 
+  const handleOrderLookup = () => {
+    if (!orderNumberInput.trim()) {
+      toast({
+        title: "Order number required",
+        description: "Please enter an order number to track",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const savedOrders = localStorage.getItem('orders');
+    if (savedOrders) {
+      const allOrders = JSON.parse(savedOrders);
+      const foundOrder = allOrders.find((order: Order) => 
+        order.orderNumber.toLowerCase() === orderNumberInput.trim().toLowerCase()
+      );
+
+      if (foundOrder) {
+        setLocation(`/order/${foundOrder.orderNumber}`);
+      } else {
+        toast({
+          title: "Order not found",
+          description: `No order found with number: ${orderNumberInput}`,
+          variant: "destructive",
+        });
+      }
+    } else {
+      toast({
+        title: "Order not found",
+        description: `No order found with number: ${orderNumberInput}`,
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -88,6 +128,35 @@ export default function MyOrders() {
             <h1 className="text-4xl font-bold mb-2" data-testid="heading-my-orders">My Orders</h1>
             <p className="text-muted-foreground">Track and manage your orders</p>
           </div>
+
+          {/* Order Number Lookup */}
+          <Card className="p-6 mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <Search className="h-5 w-5 text-primary" />
+              <h2 className="text-xl font-semibold">Track Your Order</h2>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">
+              Enter your order number to view tracking details
+            </p>
+            <div className="flex gap-3">
+              <Input
+                type="text"
+                placeholder="Enter order number (e.g., FT12345678)"
+                value={orderNumberInput}
+                onChange={(e) => setOrderNumberInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleOrderLookup()}
+                data-testid="input-order-number"
+                className="flex-1"
+              />
+              <Button 
+                onClick={handleOrderLookup}
+                data-testid="button-track-order"
+              >
+                <Search className="h-4 w-4 mr-2" />
+                Track Order
+              </Button>
+            </div>
+          </Card>
 
           {orders.length === 0 ? (
             <Card className="p-12 text-center">
