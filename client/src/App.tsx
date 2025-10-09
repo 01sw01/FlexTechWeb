@@ -11,6 +11,7 @@ import ProductDetail from "@/pages/ProductDetail";
 import Checkout from "@/pages/Checkout";
 import OrderTracking from "@/pages/OrderTracking";
 import MyOrders from "@/pages/MyOrders";
+import TrackOrderLookup from "@/pages/TrackOrderLookup";
 import AuthPage from "@/pages/AuthPage";
 import Account from "@/pages/Account";
 import About from "@/pages/About";
@@ -27,7 +28,8 @@ function Router() {
       <Route path="/product/:id" component={ProductDetail} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/order/:orderNumber" component={OrderTracking} />
-      <Route path="/orders" component={MyOrders} />
+      <Route path="/orders" component={TrackOrderLookup} />
+      <Route path="/my-orders" component={MyOrders} />
       <Route path="/auth" component={AuthPage} />
       <Route path="/account" component={Account} />
       <Route path="/about" component={About} />

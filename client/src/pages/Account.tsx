@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 interface Order {
   orderNumber: string;
   userId?: string;
+  date: string;
   items: Array<{
     id: number;
     name: string;
@@ -21,7 +22,6 @@ interface Order {
   }>;
   total: number;
   status: string;
-  createdAt: string;
 }
 
 export default function Account() {
@@ -36,7 +36,7 @@ export default function Account() {
         // Filter orders for this user
         const filteredOrders = allOrders.filter((order: Order) => order.userId === user.id);
         setUserOrders(filteredOrders.sort((a: Order, b: Order) => 
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          new Date(b.date).getTime() - new Date(a.date).getTime()
         ));
       }
     }
@@ -128,7 +128,7 @@ export default function Account() {
                         <div>
                           <p className="font-semibold">Order #{order.orderNumber}</p>
                           <p className="text-sm text-muted-foreground">
-                            {new Date(order.createdAt).toLocaleDateString()}
+                            {new Date(order.date).toLocaleDateString()}
                           </p>
                         </div>
                         <div className="text-right">
@@ -154,7 +154,7 @@ export default function Account() {
                   ))}
 
                   {userOrders.length > 5 && (
-                    <Link href="/orders">
+                    <Link href="/my-orders">
                       <Button variant="outline" className="w-full" data-testid="button-view-all-orders">
                         View All Orders
                       </Button>

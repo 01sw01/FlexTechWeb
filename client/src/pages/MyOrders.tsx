@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 
 interface Order {
   orderNumber: string;
+  date: string;
   items: Array<{
     id: number;
     name: string;
@@ -19,24 +20,23 @@ interface Order {
     image: string;
   }>;
   shippingInfo: {
-    name: string;
+    fullName: string;
     email: string;
     phone: string;
     city: string;
     address: string;
   };
-  paymentInfo: {
+  paymentInfo?: {
     cardNumber: string;
     cardholderName: string;
   };
-  shippingMethod: 'standard' | 'express' | 'overnight';
+  shippingMethod: string;
   subtotal: number;
   discount: number;
-  shippingFee: number;
+  shipping: number;
   total: number;
   estimatedDelivery: string;
   status: string;
-  createdAt: string;
 }
 
 const getStatusIcon = (status: string) => {
@@ -77,7 +77,7 @@ export default function MyOrders() {
       const parsedOrders = JSON.parse(savedOrders);
       // Sort orders by creation date (newest first)
       const sortedOrders = parsedOrders.sort((a: Order, b: Order) => 
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        new Date(b.date).getTime() - new Date(a.date).getTime()
       );
       setOrders(sortedOrders);
     }
@@ -183,7 +183,7 @@ export default function MyOrders() {
                         </Badge>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Placed on {new Date(order.createdAt).toLocaleDateString('en-US', { 
+                        Placed on {new Date(order.date).toLocaleDateString('en-US', { 
                           year: 'numeric', 
                           month: 'long', 
                           day: 'numeric' 

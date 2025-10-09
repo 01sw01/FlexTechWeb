@@ -154,15 +154,16 @@ export default function Header({ onMenuClick }: HeaderProps) {
               </SheetContent>
             </Sheet>
 
-            <Link href={user ? "/account" : "/auth"}>
-              <Button
-                variant="ghost"
-                size="icon"
-                data-testid="button-account"
-              >
+            <Button
+              variant="ghost"
+              size="icon"
+              data-testid="button-account"
+              asChild
+            >
+              <Link href={user ? "/account" : "/auth"}>
                 <User className="h-5 w-5" />
-              </Button>
-            </Link>
+              </Link>
+            </Button>
 
             <a 
               href="https://wa.me/+971542664712" 
