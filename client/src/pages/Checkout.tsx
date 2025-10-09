@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
+import { useAuth } from "@/hooks/use-auth";
 import { CreditCard, Truck, ShieldCheck, Tag, Package, Zap, Rocket } from "lucide-react";
 
 const PROMO_CODES = {
@@ -21,6 +22,7 @@ export default function Checkout() {
   const { items, cartTotal, clearCart } = useCart();
   const { toast } = useToast();
   const [, setLocation] = useLocation();
+  const { user } = useAuth();
 
   const [promoCode, setPromoCode] = useState("");
   const [appliedPromo, setAppliedPromo] = useState<keyof typeof PROMO_CODES | null>(null);
@@ -117,6 +119,7 @@ export default function Checkout() {
     // Create order object
     const order = {
       orderNumber,
+      userId: user?.id, // Associate order with logged-in user if available
       date: new Date().toISOString(),
       status: 'processing' as const,
       items: items.map(item => ({
