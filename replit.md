@@ -10,6 +10,16 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (October 2025)
 
+**Shipping & Order Tracking (Latest)**
+- Implemented shipping method selection with three options:
+  - Standard Delivery: AED 15 (free over AED 100), 5-7 business days
+  - Express Delivery: AED 30, 2-3 business days
+  - Overnight Delivery: AED 50, next business day
+- Created order tracking page with status timeline and order details
+- Orders persist to localStorage with unique order numbers (FT + timestamp)
+- Integrated lucide-react icons (Package, Rocket, Zap) for shipping methods
+- Checkout redirects to order tracking page after successful order placement
+
 **Product Detail & Checkout Features**
 - Created comprehensive product detail pages with image galleries, specifications, features, and related products
 - Implemented full checkout flow with shipping and payment forms
@@ -19,6 +29,7 @@ Preferred communication style: Simple, everyday language.
 **Design & Typography Updates**
 - Changed Store title and product names from decorative serif to modern sans-serif (Open Sans) for better consistency
 - Improved visual hierarchy and readability across the application
+- All icons use lucide-react instead of emojis for design consistency
 
 **Content Improvements**
 - Completely redesigned About page with company values, mission statement, statistics, and call-to-action sections
@@ -26,7 +37,7 @@ Preferred communication style: Simple, everyday language.
 
 **Navigation & UX**
 - Product cards now navigate to detail pages when clicked
-- Proper checkout flow: Product → Add to Cart → Cart Sheet → Checkout → Confirmation
+- Complete order flow: Product → Add to Cart → Cart Sheet → Checkout → Order Tracking
 - All navigation uses wouter Link components for smooth client-side routing
 
 ## System Architecture
@@ -59,6 +70,9 @@ Preferred communication style: Simple, everyday language.
 - Hero slider for promotional content
 - Product detail pages with image galleries, specifications, and related products
 - Checkout flow with promo code support (SAVE10, SAVE20, FLAT50)
+- Shipping method selection with three delivery options and pricing
+- Order tracking system with status timeline and estimated delivery dates
+- Order persistence using localStorage with unique order numbers
 - Comprehensive About and Contact pages
 - Admin authentication and dashboard
 
