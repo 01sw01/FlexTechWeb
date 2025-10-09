@@ -88,6 +88,13 @@ export default function Account() {
                   </div>
                 )}
 
+                <Button variant="outline" className="w-full" asChild>
+                  <Link href="/my-orders">
+                    <Package className="h-4 w-4 mr-2" />
+                    My Orders
+                  </Link>
+                </Button>
+
                 <Button
                   variant="outline"
                   className="w-full"
