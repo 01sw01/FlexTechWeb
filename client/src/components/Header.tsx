@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import logoImage from "@assets/flextech_1759756527490.png";
 import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/hooks/use-auth";
 
 interface HeaderProps {
   onMenuClick?: () => void;
@@ -15,6 +16,7 @@ interface HeaderProps {
 export default function Header({ onMenuClick }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const { items, cartCount, cartTotal, updateQuantity, removeFromCart } = useCart();
+  const { user } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b">
@@ -156,9 +158,11 @@ export default function Header({ onMenuClick }: HeaderProps) {
               variant="ghost"
               size="icon"
               data-testid="button-account"
-              onClick={() => console.log('Account clicked')}
+              asChild
             >
-              <User className="h-5 w-5" />
+              <Link href={user ? "/account" : "/auth"}>
+                <User className="h-5 w-5" />
+              </Link>
             </Button>
 
             <a 

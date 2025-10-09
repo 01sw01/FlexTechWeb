@@ -10,22 +10,28 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (October 2025)
 
-**Order Management & Tracking (Latest)**
-- Added "Track Order" link to navigation bar for easy access to order history
-- Created My Orders page (/orders) showing all customer orders:
-  - Lists orders sorted by date (newest first)
-  - Displays order number, status badge, placed date, and total
-  - Shows preview of first 3 items with images
-  - "View Details" button links to individual order tracking page
-  - Empty state with "Start Shopping" call-to-action
+**Authentication & Member Features (Latest)**
+- Implemented username/password authentication system with login and register pages
+- Created members area at /account showing user profile and order history
+- Added "My Orders" link in member profile card for quick access to full order history
+- Account button in header now navigates to /account (logged in) or /auth (logged out)
+- Orders are associated with logged-in users via userId field
+- Dummy user account created for testing: abc@flexteach.ae / pa$$word123
+- Session-based authentication using passport.js with local strategy
+- Protected routes redirect to /auth when user is not logged in
+
+**Order Management & Tracking**
+- Track Order page (/orders) now shows order lookup input field instead of listing orders
+- Created dedicated My Orders page (/my-orders) for viewing all user orders
+- My Orders page shows orders sorted by date with status badges and order details
+- Individual order tracking page (/order/:orderNumber) displays full order timeline
 - Implemented shipping method selection with three options:
   - Standard Delivery: AED 15 (free over AED 100), 5-7 business days
   - Express Delivery: AED 30, 2-3 business days
   - Overnight Delivery: AED 50, next business day
-- Created order tracking page with status timeline and order details
 - Orders persist to localStorage with unique order numbers (FT + timestamp)
-- Integrated lucide-react icons (Package, Rocket, Zap) for shipping methods
 - Checkout redirects to order tracking page after successful order placement
+- Fixed date field consistency across order displays
 
 **Product Detail & Checkout Features**
 - Created comprehensive product detail pages with image galleries, specifications, features, and related products

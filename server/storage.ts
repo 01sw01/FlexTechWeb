@@ -1,5 +1,9 @@
 import { type User, type InsertUser } from "@shared/schema";
 import { randomUUID } from "crypto";
+import session from "express-session";
+import createMemoryStore from "memorystore";
+
+const MemoryStore = createMemoryStore(session);
 
 // modify the interface with any CRUD methods
 // you might need
@@ -8,13 +12,18 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  sessionStore: session.Store;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
+  public sessionStore: session.Store;
 
   constructor() {
     this.users = new Map();
+    this.sessionStore = new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    });
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -36,3 +45,18 @@ export class MemStorage implements IStorage {
 }
 
 export const storage = new MemStorage();
+
+// Seed dummy user for testing
+export async function seedDummyUser() {
+  const { hashPassword } = await import("./auth");
+  
+  // Create dummy user: abc@flexteach.ae with password pa$$word123
+  const existingUser = await storage.getUserByUsername("abc@flexteach.ae");
+  if (!existingUser) {
+    await storage.createUser({
+      username: "abc@flexteach.ae",
+      password: await hashPassword("pa$$word123"),
+    });
+    console.log("✓ Dummy user created: abc@flexteach.ae");
+  }
+}
