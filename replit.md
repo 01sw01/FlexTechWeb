@@ -10,7 +10,14 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes (October 2025)
 
-**Shipping & Order Tracking (Latest)**
+**Order Management & Tracking (Latest)**
+- Added "Track Order" link to navigation bar for easy access to order history
+- Created My Orders page (/orders) showing all customer orders:
+  - Lists orders sorted by date (newest first)
+  - Displays order number, status badge, placed date, and total
+  - Shows preview of first 3 items with images
+  - "View Details" button links to individual order tracking page
+  - Empty state with "Start Shopping" call-to-action
 - Implemented shipping method selection with three options:
   - Standard Delivery: AED 15 (free over AED 100), 5-7 business days
   - Express Delivery: AED 30, 2-3 business days
@@ -72,6 +79,7 @@ Preferred communication style: Simple, everyday language.
 - Checkout flow with promo code support (SAVE10, SAVE20, FLAT50)
 - Shipping method selection with three delivery options and pricing
 - Order tracking system with status timeline and estimated delivery dates
+- My Orders page showing all customer orders with status and details
 - Order persistence using localStorage with unique order numbers
 - Comprehensive About and Contact pages
 - Admin authentication and dashboard

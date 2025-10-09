@@ -204,6 +204,9 @@ export default function Header({ onMenuClick }: HeaderProps) {
             <Link href="/store" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-store">
               Store
             </Link>
+            <Link href="/orders" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-orders">
+              Track Order
+            </Link>
             <Link href="/about" className="hover-elevate px-3 py-2 rounded-md" data-testid="link-about">
               About us
             </Link>

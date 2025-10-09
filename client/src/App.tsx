@@ -9,6 +9,7 @@ import Store from "@/pages/Store";
 import ProductDetail from "@/pages/ProductDetail";
 import Checkout from "@/pages/Checkout";
 import OrderTracking from "@/pages/OrderTracking";
+import MyOrders from "@/pages/MyOrders";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import AdminLogin from "@/pages/AdminLogin";
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/product/:id" component={ProductDetail} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/order/:orderNumber" component={OrderTracking} />
+      <Route path="/orders" component={MyOrders} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/admin/login" component={AdminLogin} />
