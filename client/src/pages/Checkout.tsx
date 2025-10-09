@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
-import { CreditCard, Truck, ShieldCheck, Tag } from "lucide-react";
+import { CreditCard, Truck, ShieldCheck, Tag, Package, Zap, Rocket } from "lucide-react";
 
 const PROMO_CODES = {
   'SAVE10': { discount: 10, type: 'percentage' as const },
@@ -26,6 +26,8 @@ export default function Checkout() {
   const [appliedPromo, setAppliedPromo] = useState<keyof typeof PROMO_CODES | null>(null);
   const [promoError, setPromoError] = useState("");
 
+  const [shippingMethod, setShippingMethod] = useState<'standard' | 'express' | 'overnight'>('standard');
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -39,7 +41,13 @@ export default function Checkout() {
     cvv: "",
   });
 
-  const shippingFee = cartTotal >= 100 ? 0 : 15;
+  const SHIPPING_OPTIONS = {
+    standard: { name: 'Standard Delivery', price: 15, days: '5-7 business days', Icon: Package },
+    express: { name: 'Express Delivery', price: 30, days: '2-3 business days', Icon: Rocket },
+    overnight: { name: 'Overnight Delivery', price: 50, days: 'Next business day', Icon: Zap }
+  };
+
+  const shippingFee = cartTotal >= 100 && shippingMethod === 'standard' ? 0 : SHIPPING_OPTIONS[shippingMethod].price;
   
   const getDiscount = () => {
     if (!appliedPromo) return 0;
@@ -94,17 +102,67 @@ export default function Checkout() {
       return;
     }
 
-    // Simulate payment processing
+    // Generate order number
+    const orderNumber = `FT${Date.now().toString().slice(-8)}`;
+    
+    // Calculate estimated delivery date based on shipping method
+    const deliveryDays = {
+      standard: 7,
+      express: 3,
+      overnight: 1
+    };
+    const estimatedDate = new Date();
+    estimatedDate.setDate(estimatedDate.getDate() + deliveryDays[shippingMethod]);
+    
+    // Create order object
+    const order = {
+      orderNumber,
+      date: new Date().toISOString(),
+      status: 'processing' as const,
+      items: items.map(item => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        image: item.image
+      })),
+      subtotal: cartTotal,
+      shipping: shippingFee,
+      shippingMethod: SHIPPING_OPTIONS[shippingMethod].name,
+      discount,
+      total: finalTotal,
+      shippingInfo: {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        city: formData.city
+      },
+      estimatedDelivery: estimatedDate.toLocaleDateString('en-US', { 
+        weekday: 'long',
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      })
+    };
+
+    // Save order to localStorage
+    const existingOrders = localStorage.getItem('orders');
+    const orders = existingOrders ? JSON.parse(existingOrders) : [];
+    orders.push(order);
+    localStorage.setItem('orders', JSON.stringify(orders));
+
+    // Show success toast
     toast({
       title: "Order placed successfully!",
-      description: `Order total: AED ${finalTotal.toFixed(2)}`,
+      description: `Order #${orderNumber} - Total: AED ${finalTotal.toFixed(2)}`,
     });
 
-    // Clear cart and redirect
-    clearCart();
+    // Redirect to order tracking first, then clear cart
+    setLocation(`/order/${orderNumber}`);
     setTimeout(() => {
-      setLocation("/");
-    }, 2000);
+      clearCart();
+    }, 100);
   };
 
   if (items.length === 0) {
@@ -202,6 +260,56 @@ export default function Checkout() {
                         data-testid="input-postal-code"
                       />
                     </div>
+                  </div>
+                </Card>
+
+                {/* Shipping Method */}
+                <Card className="p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Truck className="h-5 w-5 text-primary" />
+                    <h2 className="text-xl font-semibold">Shipping Method</h2>
+                  </div>
+                  <div className="space-y-3">
+                    {(Object.keys(SHIPPING_OPTIONS) as Array<keyof typeof SHIPPING_OPTIONS>).map((key) => {
+                      const option = SHIPPING_OPTIONS[key];
+                      const isFree = cartTotal >= 100 && key === 'standard';
+                      const ShippingIcon = option.Icon;
+                      return (
+                        <div
+                          key={key}
+                          onClick={() => setShippingMethod(key)}
+                          className={`border rounded-lg p-4 cursor-pointer transition-all hover-elevate ${
+                            shippingMethod === key ? 'border-primary bg-primary/5' : 'border-border'
+                          }`}
+                          data-testid={`shipping-option-${key}`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className="text-primary">
+                                <ShippingIcon className="h-6 w-6" />
+                              </div>
+                              <div>
+                                <div className="font-medium">{option.name}</div>
+                                <div className="text-sm text-muted-foreground">{option.days}</div>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              {isFree ? (
+                                <Badge className="bg-green-500 text-white">Free</Badge>
+                              ) : (
+                                <div className="font-semibold">AED {option.price.toFixed(2)}</div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                    {cartTotal < 100 && (
+                      <p className="text-sm text-muted-foreground mt-2 flex items-center gap-2">
+                        <ShieldCheck className="h-4 w-4 text-primary" />
+                        Add AED {(100 - cartTotal).toFixed(2)} more for free standard shipping!
+                      </p>
+                    )}
                   </div>
                 </Card>
 
