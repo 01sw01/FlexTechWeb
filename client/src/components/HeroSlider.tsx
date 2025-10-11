@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from 'wouter';
+
+
 
 interface Slide {
   id: number;
@@ -8,6 +11,7 @@ interface Slide {
   title: string;
   subtitle: string;
   cta: string;
+  link: string;
 }
 
 interface HeroSliderProps {
@@ -15,6 +19,9 @@ interface HeroSliderProps {
 }
 
 export default function HeroSlider({ slides }: HeroSliderProps) {
+  // Inside your component:
+  const [, setLocation] = useLocation();
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -43,7 +50,10 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
         <div
           key={slide.id}
           className={`absolute inset-0 transition-opacity duration-700 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
+            index === currentSlide 
+              ? 'opacity-100 pointer-events-auto'    // Current slide: visible and clickable
+              : 'opacity-0 pointer-events-none'       // Hidden slides: invisible and NOT clickable
+
           }`}
         >
           <img
@@ -66,7 +76,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                   size="lg"
                   className="bg-primary hover:bg-primary text-primary-foreground hover-elevate active-elevate-2"
                   data-testid="button-hero-cta"
-                  onClick={() => console.log('CTA clicked:', slide.cta)}
+                  onClick={() => setLocation(slide.link)}
                 >
                   {slide.cta}
                 </Button>

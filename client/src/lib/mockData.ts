@@ -651,21 +651,24 @@ export const heroSlides = [
     image: hero1,
     title: 'Shop the Latest Mobile Accessories',
     subtitle: 'Premium smartphones, smartwatches, and headphones at unbeatable prices',
-    cta: 'Shop Now'
+    cta: 'Shop Now',
+    link: '/store'
   },
   {
     id: 2,
     image: hero2,
     title: 'Latest Smartphones Available',
     subtitle: 'Discover cutting-edge technology with the newest mobile devices',
-    cta: 'Browse Collection'
+    cta: 'Browse Collection',
+    link: '/store'
   },
   {
     id: 3,
     image: hero3,
     title: 'Protect Your Device',
     subtitle: 'Premium screen protectors and cases for ultimate protection',
-    cta: 'Discover More'
+    cta: 'Discover More',
+    link: '/store'
   }
 ];
 

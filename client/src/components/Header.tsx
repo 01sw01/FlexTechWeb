@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
 import { Link } from "wouter";
-import logoImage from "@assets/flextech_1759756527490.png";
+import logoImage from "@assets/image_1759744025337.png";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -36,8 +36,8 @@ export default function Header({ onMenuClick }: HeaderProps) {
             <Menu className="h-6 w-6" />
           </button>
 
-          <a href="/" className="flex items-center gap-2">
-            <img src={logoImage} alt="FlexTech" className="h-10" />
+          <a href="/" className="flex items-center">
+            <img src={logoImage} alt="FlexTech" className="h-[80px]" />
           </a>
 
           <div className="hidden md:flex flex-1 max-w-xl">
